@@ -46,7 +46,7 @@ public class MainAjaxController {
 	//수강신청
 		@PostMapping("/accessClass")
 		public Map<String, String> accessClass(@RequestBody List<StuManageBean> smb) {
-			return ms.accessClassCtl(smb.get(0)); 
+			return ms.accessClassCtl(smb.get(0));
 		}
 		
 	//수강 취소

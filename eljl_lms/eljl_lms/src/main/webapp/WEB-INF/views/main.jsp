@@ -128,8 +128,8 @@ String strdate = simpleDate.format(date);
          <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#createClass2" onClick="">다음</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" onClick="deleteValue()">닫기</button>
         </div>
-        
-         
+      
+      
       
       </div>
       

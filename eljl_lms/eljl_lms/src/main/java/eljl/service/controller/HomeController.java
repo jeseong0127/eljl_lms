@@ -43,6 +43,8 @@ public class HomeController {
 		return "login";
 	}
 	
+	
+	
 	// 선생님 회원가입
 	@PostMapping(value = "/joinTeacher")
 	public ModelAndView joinTeacher(@ModelAttribute UserInfoBean ub) {

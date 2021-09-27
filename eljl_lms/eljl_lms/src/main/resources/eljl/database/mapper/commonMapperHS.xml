@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+ PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="eljl.database.mapper.commonMapperHS">
+ 
+ <select id="getCategoryList" parameterType="eljl.factory.bean.BoardCreateBeanHS" resultType="eljl.factory.bean.BoardCreateBeanHS">
+SELECT SS_CODE AS "ssCode",
+ 	   SS_NAME AS "ssName"
+ 	FROM TB_SCORESTANDARD WHERE SS_SJ_TCODE = #{mbId} AND SS_SJ_CSCODE =#{csCode} AND SS_SJ_OPCODE =#{opCode}
+ </select>
+ 
+  <select id="getEtcCode" parameterType="eljl.factory.bean.BoardCreateBeanHS" resultType="Int">
+SELECT NVL(MAX(SUBSTR(ETC_CODE, 9)),0) FROM ETC WHERE (TO_CHAR(ETC_CREATETIME, 'YYYYMMDD')) = TO_CHAR(SYSDATE, 'YYYYMMDD')
+ </select>
+ 
+   <select id="getTaskCode" parameterType="eljl.factory.bean.BoardCreateBeanHS" resultType="Int">
+SELECT NVL(MAX(SUBSTR(TK_CODE, 9)),0) FROM TK WHERE (TO_CHAR(TK_CREATETIME, 'YYYYMMDD')) = TO_CHAR(SYSDATE, 'YYYYMMDD')
+ </select>
+ 
+   <select id="getQuizCode" parameterType="eljl.factory.bean.BoardCreateBeanHS" resultType="Int">
+SELECT NVL(MAX(SUBSTR(QZ_CODE, 9)),0) FROM QZ WHERE (TO_CHAR(QZ_CREATETIME, 'YYYYMMDD')) = TO_CHAR(SYSDATE, 'YYYYMMDD')
+ </select>
+ 
+ <insert id="insEtc" parameterType="eljl.factory.bean.BoardCreateBeanHS">
+ INSERT INTO ETC VALUES (#{mbId}, #{csCode}, #{opCode}, #{ssCode}, #{numCode}, #{startDate}, #{endDate}, #{title}, #{contents}, #{stickerPath}, SYSDATE)
+ </insert>
+ 
+  <insert id="insTask" parameterType="eljl.factory.bean.BoardCreateBeanHS">
+ INSERT INTO TK VALUES (#{mbId}, #{csCode}, #{opCode}, #{ssCode}, #{numCode}, #{startDate}, #{endDate}, #{title}, #{contents}, #{stickerPath}, SYSDATE)
+ </insert>
+ 
+  <insert id="insQuiz" parameterType="eljl.factory.bean.BoardCreateBeanHS">
+ INSERT INTO QZ VALUES (#{mbId}, #{csCode}, #{opCode}, #{ssCode}, #{numCode}, #{startDate}, #{endDate}, #{title}, #{contents}, #{answer}, SYSDATE)
+ </insert>
+ 
+   <select id="allPostList" parameterType="eljl.factory.bean.BoardCreateBeanHS" resultType="eljl.factory.bean.BoardCreateBeanHS">
+SELECT TK_SSCODE AS "ssCode",
+       TK_CODE AS "numCode",
+	   TK_TITLE AS "title",
+       TK_CONTENTS AS "contents",
+       TK_FILE AS "answer",
+       TK_STARTDATE AS "startDate",
+       TK_ENDDATE AS "endDate"
+       FROM TK
+      WHERE TK_TCODE = #{mbId} AND TK_CSCODE = #{csCode} AND TK_OPCODE= #{opCode} 
+         UNION ALL
+SELECT QZ_SSCODE AS "ssCode",
+   	   QZ_CODE AS "numCode",	
+	   QZ_TITLE AS "title",
+       QZ_CONTENTS AS "contents",
+       QZ_ANSWER AS "answer",
+       QZ_STARTDATE AS "startDate",
+       QZ_ENDDATE AS "endDate"
+       FROM QZ
+   WHERE QZ_TCODE = #{mbId} AND QZ_CSCODE = #{csCode} AND QZ_OPCODE= #{opCode}
+       UNION ALL
+SELECT ETC_SSCODE AS "ssCode",
+	   ETC_CODE AS "numCode",
+ 	   ETC_TITLE AS "title",
+       ETC_CONTENTS AS "contents",
+       ETC_FILE AS "answer",
+       ETC_STARTDATE AS "startDate",
+       ETC_ENDDATE AS "endDate"
+       FROM ETC
+       WHERE ETC_TCODE = #{mbId} AND ETC_CSCODE = #{csCode} AND ETC_OPCODE= #{opCode}
+ </select>
+ 
+ </mapper>

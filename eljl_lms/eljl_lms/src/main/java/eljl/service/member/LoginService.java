@@ -89,7 +89,8 @@ public class LoginService {
 						mav.addObject("publicIp", hb.getPublicIp());
 						mav.addObject("privateIp", hb.getPrivateIp());
 						mav.addObject("mbType",hb.getMbType());
-						mav.setViewName("main");
+						mav.setViewName("class");
+						//main
 						try {
 							pu.setAttribute("mbId", hb.getMbId());
 						} catch (Exception e) {
