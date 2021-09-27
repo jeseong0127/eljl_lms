@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+ PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="eljl.database.mapper.teacherStuManageMapper">
+ <select id="getAllStudentList" parameterType="eljl.factory.bean.StuManageBean" resultType="eljl.factory.bean.JunseoBean">
+ 	SELECT *
+	FROM ALLSTULIST
+   	WHERE
+    TEID = #{teId}
+    AND CSCODE = #{csCode} 
+    AND OPCODE = #{opCode}
+ </select>
+ <select id="getGradeList" parameterType="eljl.factory.bean.StuManageBean" resultType="eljl.factory.bean.JunseoBean">
+SELECT *
+FROM TASKVIEW WHERE TEID=#{teId} AND CSCODE = #{csCode} AND OPCODE = #{opCode} AND STUID =#{stuId}
+UNION ALL
+SELECT *
+FROM QUIZVIEW WHERE TEID=#{teId} AND CSCODE = #{csCode} AND OPCODE = #{opCode} AND STUID =#{stuId}
+UNION ALL
+SELECT *
+FROM ETCVIEW WHERE TEID=#{teId} AND CSCODE = #{csCode} AND OPCODE = #{opCode} AND STUID =#{stuId}
+ </select>
+ <select id="getSignList" parameterType="eljl.factory.bean.StuManageBean" resultType="eljl.factory.bean.JunseoBean">
+SELECT SI_RL_SUB_TCODE AS TEID
+       ,SI_RL_SUB_CSCODE AS CSCODE
+       ,SI_RL_SUB_OPCODE AS OPCODE
+       ,SI_RL_STUCODE AS STUID
+       ,SI_DATE AS CREATEDATE
+       ,SI_STATUS AS STATUS
+FROM SI
+WHERE SI_RL_SUB_TCODE = #{teId} AND
+      SI_RL_SUB_CSCODE = #{csCode} AND
+      SI_RL_SUB_OPCODE = #{opCode} AND
+      SI_RL_STUCODE = #{stuId} AND
+      SI_STATUS != 'O'
+ </select>
+ <select id="getCounselingList" parameterType="eljl.factory.bean.StuManageBean" resultType="eljl.factory.bean.JunseoBean">
+ SELECT    CO_RL_SUB_TCODE AS TEID
+	      ,CO_RL_SUB_CSCODE AS CSCODE
+	      ,CO_RL_SUB_OPCODE AS OPCODE
+	      ,CO_RL_STUCODE AS STUID
+	      ,CO_TITLE AS SJTITLE
+	      ,CO_CONTENTS AS "CONTENTS"
+	      ,CO_CREATETIME AS CREATETIME
+	FROM CO
+	WHERE CO_RL_SUB_TCODE = #{teId} AND
+	      CO_RL_SUB_CSCODE = #{csCode} AND
+	      CO_RL_SUB_OPCODE = #{opCode} AND
+	      CO_RL_STUCODE = #{stuId}
+ </select>
+ </mapper>
+
+ 
