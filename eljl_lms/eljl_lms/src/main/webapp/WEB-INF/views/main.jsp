@@ -95,7 +95,7 @@ String strdate = simpleDate.format(date);
     <div class="col-sm-1 text-left"> </div>
     <div class="col-sm-10 text-left"> 
       <h1>내 강좌 목록</h1>
-      <div id="myClass" class="well well-lg">내 강좌</div>
+      <div id="myClass" class="well well-lg">내 강좌</div>	
       <hr>
       <h1>다른 강좌 목록</h1>
       <div id ="otherClassList" class="well well-lg"></div>

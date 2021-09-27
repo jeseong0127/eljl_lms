@@ -194,7 +194,7 @@
 	  for(i=0; i < jsonData.length; i++){
 		if(mbType.value == "T") {
 			if(jsonData[i].opName != null){
-			myClass.innerHTML += "<div><a href='/streamForm'>"+jsonData[i].opName +" "+ moment(jsonData[i].startDate).format("YYYY-MM-DD") +" "+ moment(jsonData[i].endDate).format("YYYY-MM-DD")+"</a></div>" ;
+			myClass.innerHTML += "<div onClick='NoticeOutput("+i+")'>"+jsonData[i].opName +" "+ moment(jsonData[i].startDate).format("YYYY-MM-DD") +" "+ moment(jsonData[i].endDate).format("YYYY-MM-DD")+"</div>" ;
 			myClass.innerHTML += "<input type='hidden' name='myTeId', value='"+jsonData[i].teId+"' />";
 			myClass.innerHTML += "<input type='hidden' name='myCsCode', value='"+jsonData[i].csCode+"' />";
 			myClass.innerHTML += "<input type='hidden' name='myOpCode', value='"+jsonData[i].opCode+"' />";
@@ -213,6 +213,23 @@
 	}
 	  
   }
+	
+	function NoticeOutput(i){
+		let myTeId = document.getElementsByName("myTeId")[i];
+		let myCsCode = document.getElementsByName("myCsCode")[i];
+		let myOpCode = document.getElementsByName("myOpCode")[i];
+		 
+		let f = document.createElement("form");
+		f.action="NoticeOutput";
+		f.method="post";
+		
+		document.body.appendChild(f);
+		f.appendChild(myTeId);
+		f.appendChild(myCsCode);
+		f.appendChild(myOpCode);
+		
+		f.submit();
+	}
   
   // 삭제할 클래스 리스트 가져오기
   function deleteClassList(){

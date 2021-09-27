@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import eljl.factory.bean.HistoryBean;
+import eljl.factory.bean.NoticeBean;
 import eljl.factory.bean.StuManageBean;
 import eljl.factory.bean.SubjectBean;
 import eljl.factory.bean.UserInfoBean;
+import eljl.lms.commonKA.MemberStream;
 import eljl.lms.dashboard.MainService;
 
 @Controller
@@ -29,6 +31,9 @@ public class MainController {
 	
 	@Autowired
 	MainService ms;
+	
+	@Autowired
+	MemberStream msm;
 	
 	@RequestMapping(value = "/streamForm", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -42,6 +47,18 @@ public class MainController {
 		return ms.deleteClassCtl(sb);
 	}
 	
+	@PostMapping("/NoticeOutput")
+	public ModelAndView NoticeOutput(NoticeBean nb) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("stream");
+		return mav;
+	}
 	
+	@PostMapping("/NoticeStOutput")
+	public ModelAndView NoticeStOutput(NoticeBean nb) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("streamS");
+		return mav;
+	}
 	
 }

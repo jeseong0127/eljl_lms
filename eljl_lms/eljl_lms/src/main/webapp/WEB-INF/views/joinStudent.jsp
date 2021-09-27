@@ -6,7 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="resources/js/master.js"></script>
+<link rel="stylesheet"
+	href="resources/css/joinStudent.css">
 <script type="text/javascript">
+
 	//아이디 체크
 	const pwdComp1 = /[a-z]/g;
 	const pwdComp2 = /[0-9]/g;
@@ -108,32 +111,43 @@
 </script>
 </head>
 <body>
-	학생회원가입 <br>
-	<input type="text" name="mbId" onblur="idCheck()" /> id
-	<br>
-	<div id="idCheck"></div>
-	<br>
-	<input type="button" value="중복" onClick="dupCheck()"/>
-	<br>
-	<input type="password" name="mbPw" onblur="pwCheck()" /> pw
-	<br>
-	<div id="pwCheck"></div>
-	<br>
-	<input type="password" name="rembPw" onblur="repwCheck()"/> rpw
-	<div id="repwCheck"></div>
-	<br>
-	<input type="text" name="mbName" maxlength=5/> name
-	<br>
-	<input type="text" maxlength=11 name="mbPhone" /> phone
-	<br>
-	<input type="text" name="mail1" /> @<select name="mail2"> 
-	<option value="@naver.com">naver.com</option>
-	<option value="@google.com">google.com</option>
-	</select>
-	<br>
-	<input type="button" onClick="submit()" value="전송" />
-	<br>
-	<a href="/loginForm">로그인페이지</a>
-	
+<div id="accesszone">
+  
+  <div class="title">학생 회원가입</div>
+  <br>
+  
+<div class="joinbox">
+  <div>
+   <input id="textbox" name="mbId" onblur="idCheck()" placeholder="아이디"  />
+  </div>
+   <div id="idCheck"></div>
+  <div>
+   <input type="button" id="dubBtn" class="button" style="margin-bottom:10px;" onClick="dupCheck()" value="중복검사" /> 
+  </div>
+  <div>    
+   <input id="textbox" type="password" name="mbPw" style="margin-bottom:10px;" onblur="pwCheck()" placeholder="비밀번호">
+  </div>
+  <div id="pwCheck"></div>
+  <div>
+   <input id="textbox" type="password" name="rembPw" style="margin-bottom:10px;" onblur="repwCheck()" placeholder="비밀번호 재확인">
+  </div>
+  <div id="repwCheck"></div>
+  <div>
+   <input id="textbox" name="mbName" maxlength=5 style="margin-bottom:10px;" placeholder="이름">
+  </div>
+  <div>
+   <input id="textbox" maxlength=11 name="mbPhone" style="margin-bottom:10px;" placeholder="번호">  
+  </div>
+  <div>
+   <input id="textbox" name="mail1" style="margin-bottom:10px;" placeholder="이메일"> <span>@</span><select id="mbox" name="mail2">
+   <option value="@naver.com">naver.com</option>
+   <option value="@google.com">google.com</option>
+  </select>  
+  </div>
+    <div id="boxbox">
+    <input id="box" type="button" onClick="submit()" value="회원가입">
+  </div>
+  <a id="lbox" href="/loginForm">로그인페이지</a>
+ </div>
 </body>
 </html>

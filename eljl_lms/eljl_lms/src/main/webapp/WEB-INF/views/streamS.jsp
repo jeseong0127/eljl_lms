@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Stream</title>
+<title>StreamS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -15,7 +15,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	function NoticeOutput(){
+	function NoticeStOutput(){
 		let myTeId = document.getElementsByName("myTeId");
 	}
 </script>
@@ -71,14 +71,6 @@ footer {
 	text-align: center;
 }
 
-/* 공지사항 작성칸 */
-#textbox {
-	box-sizing: border-box;
-	width: 400px; /* 100% */
-	height: 300px;
-	border-color: blue;
-}
-
 /* 일정글자 */
 #scfont{
 	font-style: italic;
@@ -109,21 +101,7 @@ footer {
 	margin-left: 55px;
 }
 
-/* 공지사항 작성*/
-.notice {
-	position: relative;
-	left: -310px;
-}
-
-/* 공지 체크박스 */
-.noticebox {
-	position: relative;
-	left: -80px;
-	font-size: 35px;
-	
-}
-
-/* 공지사항 영역 */
+/* 공지사항박스 영역 */
 .no-outbox {
 	position: relative;
 	top: -352px;
@@ -164,7 +142,7 @@ p {
 <script type="text/javascript" src="resources/js/main.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
-<body onload="NoticeOutput()">
+<body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid" style="display: flex;">
 			<div class="navbar-header">
@@ -218,23 +196,6 @@ p {
 					<span id="scfont">기타 일정</span>
 				</div>
 		</div>
-		<!-- 공지사항 -->
-		<div class="notice">
-			<div>
-				<div class="noticebox">
-					<input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
-					<label class="btn btn-outline-important" for="important-outlined">중요공지</label>
-
-					<input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
-					<label class="btn btn-outline-general" for="general-outlined">일반공지</label>
-				</div>
-				<input id="textbox" class="textbox" placeholder="내용을 입력해주세요." />
-			</div>
-			<div>
-				<input class="button" type="button" onClick="submit()" value="작성" />
-			</div>
-		</div>
-		<br>
 		<!-- 공지사항 출력 예시 박스 -->
 		<div class="no-outbox">
 			<div class="well">
