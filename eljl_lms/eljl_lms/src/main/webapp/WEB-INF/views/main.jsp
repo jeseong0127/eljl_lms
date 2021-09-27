@@ -80,7 +80,7 @@ String strdate = simpleDate.format(date);
               <li onClick="deleteClassList()"><a data-toggle="modal" data-target="#deleteClass"><span class="glyphicon glyphicon-trash" > Delete</span></a></li>                        
            </ul>
        </li>
-        <li><a href="#">Calender</a></li>
+        <li><a href="calendar">Calender</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">

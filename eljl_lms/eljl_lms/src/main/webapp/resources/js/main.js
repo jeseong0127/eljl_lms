@@ -129,9 +129,7 @@
 			index++;
 		}
 	}
-	
-	alert("현재 text :"+text);
-	
+		
 	index = 0;
 	div.innerHTML = save + "<div id='Category"+count+"'><select name='category' onChange='addName(this.options[this.selectedIndex].value,"+count+")'> "+"<option value='T'>과제</option>" + "<option value='Q'>퀴즈</option>" + "<option value='A'>출결</option>"+ "<option value='E'>기타</option>"+ "</select>"+ "<input type='text' name='addGrade' value='' /><div id='addName"+count+"'></div><input type='button' value='삭제' onClick='deleteCategory("+count+")'> </div>";
 	
@@ -340,7 +338,7 @@ function sendMsg(message){
 }
 
 	
-	
+
 	
 	
 	

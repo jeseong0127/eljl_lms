@@ -90,5 +90,47 @@
  	delete from rl where RL_SUB_TCODE = #{teId} AND RL_SUB_CSCODE = #{csCode} AND RL_SUB_OPCODE = #{opCode} AND RL_STUCODE = #{stuId}
  </delete>
  
+ <select id = "getStuScheduleList" parameterType="eljl.factory.bean.StuManageBean" resultType="eljl.factory.bean.StuManageBean">
+ 	 select RL_SUB_TCODE as "teId",
+                RL_SUB_CSCODE as "csCode",
+                RL_SUB_OPCODE as "opCode"
+    from rl
+    where RL_STUCODE = #{stuId}
+ </select>
+ 
+ <select id = "getTeScheduleList" parameterType="eljl.factory.bean.StuManageBean" resultType="eljl.factory.bean.StuManageBean">
+ 	 select SUB_TCODE as "teId",
+                SUB_CSCODE as "csCode",
+                SUB_OPCODE as "opCode"
+    from sub
+    where sub_tcode = #{stuId}
+ </select>
+ 
+ <select id = "getScheduleTask" parameterType="eljl.factory.bean.SubjectBean" resultType="eljl.factory.bean.CalendarBean" >
+ 	select  TK_TITLE as "title",
+ 			TO_CHAR(TK_STARTDATE,'YYYY-MM-DD') as "start",
+             TO_CHAR(TK_ENDDATE,'YYYY-MM-DD') as "end",
+             '#84B1ED' as "backgroundColor"
+	from TB_TASK 
+	where TK_TCODE = #{teId} and TK_CSCODE = #{csCode} and TK_OPCODE = #{opCode}
+ </select>
+ 
+ <select id = "getScheduleQuiz" parameterType="eljl.factory.bean.SubjectBean" resultType="eljl.factory.bean.CalendarBean" >
+ 	select  QZ_TITLE as "title",
+ 			TO_CHAR(QZ_STARTDATE,'YYYY-MM-DD') as "start",
+            TO_CHAR(QZ_ENDDATE,'YYYY-MM-DD') as "end",
+            '#C89EC4' as "backgroundColor"
+            from TB_QUIZ 
+	where QZ_TCODE = #{teId} and QZ_CSCODE = #{csCode} and QZ_OPCODE = #{opCode}
+ </select>
+ 
+ <select id = "getScheduleETC" parameterType="eljl.factory.bean.SubjectBean" resultType="eljl.factory.bean.CalendarBean" >
+ 	 select  ETC_TITLE as "title",
+ 			TO_CHAR(ETC_STARTDATE,'YYYY-MM-DD') as "start",
+            TO_CHAR(ETC_ENDDATE,'YYYY-MM-DD') as "end",
+            '#EE7785' as "backgroundColor"
+            from TB_ETC
+	where ETC_TCODE = #{teId} and ETC_CSCODE = #{csCode} and ETC_OPCODE = #{opCode}
+ </select>
  
  </mapper>

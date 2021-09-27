@@ -4,14 +4,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import eljl.factory.bean.BoardCreateBean;
 import eljl.factory.bean.StuManageBean;
 import eljl.factory.bean.SubjectBean;
+import eljl.factory.bean.UserInfoBean;
+import eljl.lms.dashboard.Calendar;
 import eljl.lms.dashboard.MainService;
 
 @RestController
@@ -20,6 +24,9 @@ public class MainAjaxController {
 	
 	@Autowired
 	MainService ms;
+	
+	@Autowired
+	Calendar cd;
 	
 	//클래스 만들기
 	@PostMapping("/createLecture")
@@ -55,5 +62,4 @@ public class MainAjaxController {
 			return ms.cancelClassCtl(smb); 
 		}
 	
-		
 }

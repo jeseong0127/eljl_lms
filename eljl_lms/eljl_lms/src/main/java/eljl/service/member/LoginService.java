@@ -89,9 +89,10 @@ public class LoginService {
 						mav.addObject("publicIp", hb.getPublicIp());
 						mav.addObject("privateIp", hb.getPrivateIp());
 						mav.addObject("mbType",hb.getMbType());
-						mav.setViewName("main");
+						mav.setViewName("setting");
 						try {
 							pu.setAttribute("mbId", hb.getMbId());
+							pu.setAttribute("mbType", hb.getMbType());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -117,6 +118,7 @@ public class LoginService {
 						mav.setViewName("main");
 						try {
 							pu.setAttribute("mbId", hb.getMbId());
+							pu.setAttribute("mbType", hb.getMbType());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
