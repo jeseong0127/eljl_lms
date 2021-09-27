@@ -22,4 +22,6 @@ public class StuManageBean {
 	
 	Date startDate;
 	Date endDate;
+	
+	String mbType;
 }

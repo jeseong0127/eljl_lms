@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import eljl.factory.bean.HistoryBean;
 import eljl.factory.bean.UserInfoBean;
+import eljl.factory.util.ProjectUtils;
 import eljl.service.member.LoginService;
 
 /**
@@ -36,6 +37,9 @@ public class HomeController {
 	LoginService ls;
 	
 	ModelAndView mav;
+	
+	@Autowired
+	ProjectUtils pu;
 	
 	//메인
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -81,8 +85,11 @@ public class HomeController {
 	
 	//메인폼으로 가기
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String main() {
-		return "main";
+	public ModelAndView main() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("main");
+		
+		return mav;
 	}
 	
 	//중복체크
@@ -132,12 +139,6 @@ public class HomeController {
 		return ls.sendNewPW(ub);
 	}
 	
-	
-	// 캘린더 From 양식
-	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
-	public String calendarForm() {
-		return "calendar";
-	}
 
 }
 
