@@ -1,6 +1,6 @@
 package eljl.database.mapper;
 
-import eljl.factory.bean.UserInfoBean;
+import eljl.database.bean.UserInfoBean;
 
 public interface memberMapper {
    

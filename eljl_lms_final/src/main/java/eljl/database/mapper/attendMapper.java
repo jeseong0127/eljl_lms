@@ -2,7 +2,7 @@ package eljl.database.mapper;
 
 import java.util.List;
 
-import eljl.factory.bean.StuManageBean;
+import eljl.database.bean.StuManageBean;
 
 public interface attendMapper {
    
